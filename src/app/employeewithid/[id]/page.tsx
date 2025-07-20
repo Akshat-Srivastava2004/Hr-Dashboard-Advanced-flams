@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import { EmployeeDetails } from "@/app/Employeedetails"
 import { BackButton } from "@/components/BackButton"
-import { User } from "@/app/page"
+import type { User } from "@/app/page"
 
 interface Employee {
   id: number
@@ -18,12 +18,10 @@ interface Employee {
   position: string
 }
 
-
 export async function generateStaticParams() {
   try {
     const res = await fetch("https://dummyjson.com/users?limit=30")
     const data = await res.json()
-
     return data.users.map((user: User) => ({
       id: user.id.toString(),
     }))
@@ -52,7 +50,6 @@ function getPositionForDepartment(dept: string, userId: number): string {
     Operations: ["Operations Manager", "Project Coordinator", "Process Analyst", "Operations Specialist"],
     Design: ["UI/UX Designer", "Graphic Designer", "Product Designer", "Creative Director"],
   }
-
   const departmentRoles = roles[dept as keyof typeof roles] || roles.Engineering
   return departmentRoles[(userId * 19) % departmentRoles.length]
 }
@@ -90,7 +87,6 @@ function generateMockData(userId: number) {
   }
 }
 
-
 async function getEmployee(id: string): Promise<Employee | null> {
   try {
     const res = await fetch(`https://dummyjson.com/users/${id}`)
@@ -122,8 +118,13 @@ async function getEmployee(id: string): Promise<Employee | null> {
 }
 
 
-export default async function EmployeePage({ params }: { params: { id: string } }) {
-  const employee = await getEmployee(params.id)
+export default async function EmployeePage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  const employee = await getEmployee(id)
 
   if (!employee) notFound()
 
@@ -134,7 +135,6 @@ export default async function EmployeePage({ params }: { params: { id: string } 
           <BackButton />
         </div>
       </div>
-
       <div className="max-w-7xl mx-auto px-6 py-8">
         <EmployeeDetails employee={employee} />
       </div>
@@ -143,7 +143,11 @@ export default async function EmployeePage({ params }: { params: { id: string } 
 }
 
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
   const { id } = await params
   const employee = await getEmployee(id)
 
