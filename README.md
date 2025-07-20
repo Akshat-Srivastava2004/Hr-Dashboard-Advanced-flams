@@ -69,3 +69,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ---
 
 # Hr-Dashboard-Advanced-flams
+<img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/6cd7dccb-892f-48c0-a2a2-e855036cd8ab" />
+<img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/0ddade23-c6a1-4638-aba5-352a6ec33c13" />
+<img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/7c85dbef-2ab5-49ff-a5b0-3b42b4764b9a" />
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/fe6c99eb-5f77-40bc-8f44-7e1e927d134e" />
+<img width="1919" height="969" alt="image" src="https://github.com/user-attachments/assets/e0c2b919-1cd5-4e5c-8f8b-0ab61f67fc3b" />
+<img width="1918" height="969" alt="image" src="https://github.com/user-attachments/assets/592b106d-634f-4c25-85a5-eb1a0f7312e1" />
