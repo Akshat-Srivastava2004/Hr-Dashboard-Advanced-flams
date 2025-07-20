@@ -1,5 +1,4 @@
 "use client"
-
 import type React from "react"
 import { useState, useEffect } from "react"
 import { UserCard } from "@/components/ui/Usercard"
@@ -35,12 +34,12 @@ interface ApiResponse {
   limit: number
 }
 const navItems = [
-  { label: "Dashboard", route: "/dashboard" },
-  { label: "All Employees", route: "/employees" },
-  { label: "Departments", route: "/departments" },
+  { label: "Dashboard", route: "/" },
   { label: "Bookmarks", route: "/bookmarks" },
-  { label: "Payroll", route: "/payroll" },
   { label: "Analytics", route: "/analytics" },
+  { label: "Login", route: "/login" },
+  { label: "Register", route: "/register" },
+
 ];
 
 
@@ -99,14 +98,14 @@ export default function Dashboard() {
         }
         const data: ApiResponse = await response.json()
 
-  
-        const usersWithExtras: User[] = data.users.map((user:ApiUser) => ({
+
+        const usersWithExtras: User[] = data.users.map((user: ApiUser) => ({
           id: user.id,
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
           age: user.age,
-          department: user.company.department || getRandomDepartment(), 
+          department: user.company.department || getRandomDepartment(),
           rating: getPerformanceRating(),
         }))
 
@@ -168,55 +167,22 @@ export default function Dashboard() {
         <div className="relative group">
           <button className="text-sm focus:outline-none w-full">
             <div className="flex items-center justify-between h-16 px-4 border-b border-gray-800 hover:bg-gray-800">
-              <span className="font-medium">HR Portal</span>
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <span className="font-medium text-white">HR Portal</span>
+
             </div>
           </button>
-          <div className="absolute z-10 hidden group-focus-within:flex flex-col w-full pb-1 bg-gray-800 shadow-lg">
-            {["Dashboard", "Employees", "Reports"].map((item, i) => (
-              <a key={i} className="w-full px-4 py-2 text-left hover:bg-gray-900" href="#">
-                {item}
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="flex flex-col flex-grow p-4 overflow-auto">
-           {navItems.map((item, index) => (
-    <Link
-      key={index}
-      href={item.route}
-      className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-800 transition-colors"
-    >
-      <span>{item.label}</span>
-    </Link>
-  ))}
-
-  <Link
-    href="/employees/add"
-    className="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium bg-gray-800 rounded hover:bg-gray-700 transition-colors"
-  >
-    <svg
-      className="w-5 h-5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-      />
-    </svg>
-    <span className="ml-2">Add Employee</span>
-  </Link>
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
+              href={item.route}
+              className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+            >
+              <span>{item.label}</span>
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -227,7 +193,7 @@ export default function Dashboard() {
           <button className="h-10 px-4 ml-2 text-sm font-medium bg-gray-800 rounded hover:bg-gray-700">Add New</button>
         </div>
 
-        {/* Employee cards area */}
+
         <div className="flex-grow p-6 overflow-auto bg-gray-50">
           {loading && (
             <div className="flex items-center justify-center h-64">
