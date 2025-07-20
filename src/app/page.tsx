@@ -189,7 +189,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Main Content */}
+   
       <div className="flex flex-col flex-grow">
         <div className="flex items-center h-16 px-8 border-b border-gray-800">
           <h1 className="text-lg font-medium text-white ml-12 md:ml-0">Employee Dashboard</h1>

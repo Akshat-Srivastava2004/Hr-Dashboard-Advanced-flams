@@ -63,7 +63,7 @@ export function EmployeeDetails({ employee }: EmployeeDetailsProps) {
 
   return (
     <div className="space-y-6">
-      {/* Header Card */}
+     
       <Card>
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
@@ -118,7 +118,7 @@ export function EmployeeDetails({ employee }: EmployeeDetailsProps) {
         </CardContent>
       </Card>
 
-      {/* Tabs */}
+     
       <Card>
         <CardHeader>
           <div className="flex space-x-1 border-b">
