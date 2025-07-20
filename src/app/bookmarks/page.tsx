@@ -69,10 +69,10 @@ export default function BookmarksPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <Button variant="ghost" onClick={() => router.push("/dashboard")} className="mb-4">
+          <Button variant="ghost" onClick={() => router.push("/")} className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Dashboard
           </Button>
@@ -109,7 +109,6 @@ export default function BookmarksPage() {
         </div>
       </div>
 
-      {/* Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         {bookmarks.length === 0 ? (
           <Card className="text-center py-12">

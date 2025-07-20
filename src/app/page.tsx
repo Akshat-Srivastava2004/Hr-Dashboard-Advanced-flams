@@ -6,6 +6,8 @@ import { SearchAndFilters } from "@/components/ui/Searchandfilter"
 import { useSearchAndFilter } from "./Hooks/searchandfilter"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import MobileSider from "@/components/mobile-sider"
+
 interface ApiUser {
   id: number
   firstName: string
@@ -33,15 +35,14 @@ interface ApiResponse {
   skip: number
   limit: number
 }
+
 const navItems = [
   { label: "Dashboard", route: "/" },
   { label: "Bookmarks", route: "/bookmarks" },
   { label: "Analytics", route: "/analytics" },
   { label: "Login", route: "/login" },
   { label: "Register", route: "/register" },
-
-];
-
+]
 
 const sidebarIcons = [
   <svg key="icon1" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,7 +71,6 @@ const sidebarIcons = [
   </svg>,
 ]
 
-
 function getRandomDepartment() {
   const departments = ["Engineering", "Marketing", "Sales", "HR", "Finance", "Operations", "Design"]
   return departments[Math.floor(Math.random() * departments.length)]
@@ -84,10 +84,8 @@ export default function Dashboard() {
   const [users, setUsers] = useState<User[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
-
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const searchAndFilter = useSearchAndFilter(users)
-
 
   useEffect(() => {
     async function fetchUsers() {
@@ -97,8 +95,6 @@ export default function Dashboard() {
           throw new Error("Failed to fetch users")
         }
         const data: ApiResponse = await response.json()
-
-
         const usersWithExtras: User[] = data.users.map((user: ApiUser) => ({
           id: user.id,
           firstName: user.firstName,
@@ -108,7 +104,6 @@ export default function Dashboard() {
           department: user.company.department || getRandomDepartment(),
           rating: getPerformanceRating(),
         }))
-
         setUsers(usersWithExtras)
       } catch (err) {
         setError("Could not load employee data")
@@ -117,14 +112,26 @@ export default function Dashboard() {
         setLoading(false)
       }
     }
-
     fetchUsers()
   }, [])
 
   return (
     <div className="flex w-screen h-screen text-gray-400 bg-gray-900">
 
-      <div className="flex flex-col items-center w-16 pb-4 overflow-auto border-r border-gray-800 text-gray-500">
+      <button
+        className="fixed top-4 left-4 z-30 md:hidden bg-gray-800 p-2 rounded hover:bg-gray-700"
+        onClick={() => setIsMobileMenuOpen(true)}
+      >
+        <svg className="w-6 h-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+
+      <MobileSider isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+
+
+      <div className="hidden md:flex flex-col items-center w-16 pb-4 overflow-auto border-r border-gray-800 text-gray-500">
         <SidebarIcon
           svg={
             <svg
@@ -161,18 +168,14 @@ export default function Dashboard() {
           />
         </div>
       </div>
-
-
-      <div className="flex flex-col w-56 border-r border-gray-800">
+      <div className="hidden md:flex flex-col w-56 border-r border-gray-800">
         <div className="relative group">
           <button className="text-sm focus:outline-none w-full">
             <div className="flex items-center justify-between h-16 px-4 border-b border-gray-800 hover:bg-gray-800">
               <span className="font-medium text-white">HR Portal</span>
-
             </div>
           </button>
         </div>
-
         <div className="flex flex-col flex-grow p-4 overflow-auto">
           {navItems.map((item, index) => (
             <Link
@@ -186,34 +189,30 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="flex flex-col flex-grow">
         <div className="flex items-center h-16 px-8 border-b border-gray-800">
-          <h1 className="text-lg font-medium text-white">Employee Dashboard</h1>
+          <h1 className="text-lg font-medium text-white ml-12 md:ml-0">Employee Dashboard</h1>
           <button className="h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-gray-800">Export Data</button>
           <button className="h-10 px-4 ml-2 text-sm font-medium bg-gray-800 rounded hover:bg-gray-700">Add New</button>
         </div>
-
-
         <div className="flex-grow p-6 overflow-auto bg-gray-50">
           {loading && (
             <div className="flex items-center justify-center h-64">
               <div className="text-lg text-gray-600">Loading employees...</div>
             </div>
           )}
-
           {error && (
             <div className="flex items-center justify-center h-64">
               <div className="text-lg text-red-600">{error}</div>
             </div>
           )}
-
           {!loading && !error && (
             <>
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Team Members</h2>
                 <p className="text-gray-600">Manage your team and track performance</p>
               </div>
-
               <SearchAndFilters
                 searchQuery={searchAndFilter.searchQuery}
                 setSearchQuery={searchAndFilter.setSearchQuery}
@@ -226,7 +225,6 @@ export default function Dashboard() {
                 clearAllFilters={searchAndFilter.clearAllFilters}
                 totalResults={searchAndFilter.filteredUsers.length}
               />
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {searchAndFilter.filteredUsers.map((user) => (
                   <UserCard
@@ -240,7 +238,6 @@ export default function Dashboard() {
                   />
                 ))}
               </div>
-
               {searchAndFilter.filteredUsers.length === 0 && (
                 <div className="text-center py-12">
                   <p className="text-gray-500 text-lg">No employees match your search criteria</p>

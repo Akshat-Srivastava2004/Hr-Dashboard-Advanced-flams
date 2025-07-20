@@ -114,10 +114,10 @@ export default function AnalyticsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header section */}
+
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <Button variant="ghost" onClick={() => router.push("/dashboard")} className="mb-4">
+          <Button variant="ghost" onClick={() => router.push("/")} className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Dashboard
           </Button>
@@ -137,9 +137,9 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      {/* Analytics content */}
+
       <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Summary cards */}
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardContent className="p-6">
@@ -193,7 +193,7 @@ export default function AnalyticsPage() {
           </Card>
         </div>
 
-        {/* Charts section */}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           <Card>
             <CardHeader>
@@ -216,7 +216,7 @@ export default function AnalyticsPage() {
           </Card>
         </div>
 
-        {/* Performance distribution chart */}
+
         <Card>
           <CardHeader>
             <CardTitle>Performance Distribution</CardTitle>
