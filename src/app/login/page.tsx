@@ -32,9 +32,8 @@ export default function LoginPage() {
                             Stay connected with us!
                         </h3>
                         <p className="text-green-600 dark:text-gray-400 mt-4">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Temporibus quia molestias delectus reprehenderit sequi iste ut,
-                            quod alias. Consequuntur, quis?
+                            Log in to manage employee records, view analytics, track promotions, and much more—all from your personalized dashboard.
+
                         </p>
                     </div>
 

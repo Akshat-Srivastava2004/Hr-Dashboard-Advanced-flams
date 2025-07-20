@@ -28,9 +28,9 @@ export default function RegisterPage() {
                         <h3 className="text-2xl text-green-800 dark:text-white font-bold">
                             Create an account and stay connected!
                         </h3>
-                        <p className="text-green-600 dark:text-gray-400 mt-4">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eveniet autem delectus molestias hic blanditiis illo?
-                        </p>
+                        <p className="text-green-600 dark:text-gray-400 mt-4">Register to access the HR Dashboard and manage employee data efficiently. 
+Keep track of performance, promotions, feedback, and analytics—all in one place.
+</p>
                     </div>
 
                     <div className="w-full md:w-1/2 mt-8 md:mt-0">
