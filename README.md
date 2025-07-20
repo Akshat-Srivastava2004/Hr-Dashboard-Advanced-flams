@@ -22,7 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ---
 
-## ------------------------------------- Features i have implemented in Hr-dashboard Portal is --------------------------------------------
+##  Features i have implemented in Hr-dashboard Portal is 
 
 1. Display all the employee data in page.tsx file (routes :/)
 2. Added a Bookmark,view,and promote option in each employee card 
@@ -35,7 +35,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ---
 
-## -----------------------------------------Nextjs features Use ----------------------------
+## Nextjs features Use
 
 1. As all of my files are inside the app folder so for static site generation i have used App router with getstaticparams
 2. Created my own custom hook for search and filter the employee details and also reduce the code lines of main page 
