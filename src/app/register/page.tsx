@@ -21,7 +21,7 @@ export default function RegisterPage() {
         <div className="bg-green-100 dark:bg-gray-800 h-screen">
             <div className="container mx-auto px-6 py-8">
                 <h2 className="text-4xl font-bold text-center text-green-800 dark:text-white mb-8">
-                     Register to Hr Dashborad  Website!
+                     Register to Hr Dashboard  Website!
                 </h2>
                 <div className="flex flex-wrap items-center">
                     <div className="w-full md:w-1/2">
