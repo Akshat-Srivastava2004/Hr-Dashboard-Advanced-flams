@@ -17,7 +17,7 @@ export function UserCard({ id, name, email, age, department, rating }: UserCardP
 
  console.log("the id is ",id);
  console.log("the name is ",name)
-  // Helper to render star rating
+
   const renderStars = () => {
     return Array.from({ length: 5 }).map((_, i) => (
       <Star key={i} className={`w-4 h-4 ${i < rating ? "text-yellow-500 fill-yellow-400" : "text-gray-300"}`} />

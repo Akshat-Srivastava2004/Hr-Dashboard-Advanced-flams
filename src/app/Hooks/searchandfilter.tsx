@@ -1,7 +1,5 @@
 "use client"
-
 import { useState, useMemo } from "react"
-
 interface User {
   id: number
   firstName: string
@@ -17,7 +15,7 @@ export function useSearchAndFilter(users: User[]) {
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([])
   const [selectedRatings, setSelectedRatings] = useState<number[]>([])
 
-  // Get unique departments from users
+ 
   const availableDepartments = useMemo(() => {
     const departments = users.map((user) => user.department)
     return [...new Set(departments)].sort()

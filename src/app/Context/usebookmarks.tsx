@@ -1,10 +1,5 @@
-
-
 "use client"
-
 import { createContext, useContext, useState, useEffect, ReactNode } from "react"
-
-
 interface BookmarkedEmployee {
   id: number
   name: string
@@ -29,7 +24,7 @@ const BookmarkContext = createContext<BookmarkContextType | null>(null)
 export function BookmarkProvider({ children }: { children: ReactNode }) {
   const [bookmarks, setBookmarks] = useState<BookmarkedEmployee[]>([])
 
-  // Load bookmarks from localStorage when component mounts
+  
   useEffect(() => {
     const loadBookmarksFromStorage = () => {
       const saved = localStorage.getItem("employee-bookmarks")

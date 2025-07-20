@@ -1,5 +1,4 @@
 "use client"
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, MessageSquare, ThumbsUp, User } from "lucide-react"
@@ -8,7 +7,7 @@ interface FeedbackTabProps {
   employeeId: number
 }
 
-// Generate mock feedback
+
 function generateFeedback(employeeId: number) {
   const feedbackTypes = ["peer", "manager", "client", "self"]
   const comments = [
@@ -25,7 +24,7 @@ function generateFeedback(employeeId: number) {
   const feedback = []
 
   for (let i = 0; i < 6; i++) {
-    const rating = Math.floor(Math.random() * 2) + 4 // 4-5 stars
+    const rating = Math.floor(Math.random() * 2) + 4 
     const type = feedbackTypes[Math.floor(Math.random() * feedbackTypes.length)]
 
     feedback.push({

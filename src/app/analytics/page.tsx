@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -53,8 +52,8 @@ function generateAnalyticsData(): Analytics {
   const departments = ["Engineering", "Marketing", "Sales", "HR", "Finance", "Operations", "Design"]
 
   const departmentData: DepartmentData[] = departments.map((department) => {
-    const averageRating = Math.round((Math.random() * 2 + 3) * 10) / 10 // Generates 3.0 to 5.0
-    const employeeCount = Math.floor(Math.random() * 15) + 5 // Between 5 and 20
+    const averageRating = Math.round((Math.random() * 2 + 3) * 10) / 10 
+    const employeeCount = Math.floor(Math.random() * 15) + 5 
     const totalRating = averageRating * employeeCount
 
     return { department, averageRating, employeeCount, totalRating }
