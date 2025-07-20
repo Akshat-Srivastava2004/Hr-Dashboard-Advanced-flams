@@ -24,7 +24,7 @@ const BookmarkContext = createContext<BookmarkContextType | null>(null)
 export function BookmarkProvider({ children }: { children: ReactNode }) {
   const [bookmarks, setBookmarks] = useState<BookmarkedEmployee[]>([])
 
-  
+
   useEffect(() => {
     const loadBookmarksFromStorage = () => {
       const saved = localStorage.getItem("employee-bookmarks")

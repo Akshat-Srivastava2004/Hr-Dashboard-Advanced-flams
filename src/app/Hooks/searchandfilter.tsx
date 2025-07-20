@@ -15,7 +15,7 @@ export function useSearchAndFilter(users: User[]) {
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([])
   const [selectedRatings, setSelectedRatings] = useState<number[]>([])
 
- 
+
   const availableDepartments = useMemo(() => {
     const departments = users.map((user) => user.department)
     return [...new Set(departments)].sort()
@@ -24,11 +24,11 @@ export function useSearchAndFilter(users: User[]) {
 
   const availableRatings = [1, 2, 3, 4, 5]
 
- 
+
   const filteredUsers = useMemo(() => {
     let filtered = users
 
- 
+
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
       filtered = filtered.filter((user) => {
@@ -40,7 +40,7 @@ export function useSearchAndFilter(users: User[]) {
       })
     }
 
-  
+
     if (selectedDepartments.length > 0) {
       filtered = filtered.filter((user) => selectedDepartments.includes(user.department))
     }

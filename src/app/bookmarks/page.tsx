@@ -15,52 +15,51 @@ export default function BookmarksPage() {
   const { bookmarks, removeBookmark, clearAllBookmarks } = useBookmarks()
   const [selectedEmployees, setSelectedEmployees] = useState<number[]>([])
 
-const renderStars = (rating: number) => {
-  const stars = [];
+  const renderStars = (rating: number) => {
+    const stars = [];
 
-  for (let i = 0; i < 5; i++) {
-    const isFilled = i < rating;
+    for (let i = 0; i < 5; i++) {
+      const isFilled = i < rating;
 
-    stars.push(
-      <Star
-        key={i}
-        className={`w-4 h-4 ${
-          isFilled ? "text-yellow-500 fill-yellow-400" : "text-gray-300"
-        }`}
-      />
-    );
-  }
-
-  return stars;
-};
-
-const handleemployee = (employeeId: number) => {
-  setSelectedEmployees((prevSelected) => {
-    const alreadySelected = prevSelected.includes(employeeId);
-
-    if (alreadySelected) {
-    
-      return prevSelected.filter((id) => id !== employeeId);
-    } else {
-     
-      return [...prevSelected, employeeId];
+      stars.push(
+        <Star
+          key={i}
+          className={`w-4 h-4 ${isFilled ? "text-yellow-500 fill-yellow-400" : "text-gray-300"
+            }`}
+        />
+      );
     }
-  });
-};
 
- const handleallaction = (action: string) => {
-  
+    return stars;
+  };
 
-  const count = selectedEmployees.length;
+  const handleemployee = (employeeId: number) => {
+    setSelectedEmployees((prevSelected) => {
+      const alreadySelected = prevSelected.includes(employeeId);
+
+      if (alreadySelected) {
+
+        return prevSelected.filter((id) => id !== employeeId);
+      } else {
+
+        return [...prevSelected, employeeId];
+      }
+    });
+  };
+
+  const handleallaction = (action: string) => {
 
 
-  toast.success(`${action} action triggered for ${count} employees`);
+    const count = selectedEmployees.length;
 
 
-  setSelectedEmployees([]);
-};
+    toast.success(`${action} action triggered for ${count} employees`);
 
-  const handlepromotebutton = ( employeeName: string) => {
+
+    setSelectedEmployees([]);
+  };
+
+  const handlepromotebutton = (employeeName: string) => {
     toast.success(`Promote action triggered for ${employeeName}`)
   }
 
@@ -138,7 +137,7 @@ const handleemployee = (employeeId: number) => {
                         <input
                           type="checkbox"
                           checked={selectedEmployees.includes(employee.id)}
-                          onChange={() =>handleemployee(employee.id)}
+                          onChange={() => handleemployee(employee.id)}
                           className="rounded"
                         />
                         <div>
@@ -156,11 +155,11 @@ const handleemployee = (employeeId: number) => {
                           <DropdownMenuItem onClick={() => router.push(`/employee/${employee.id}`)}>
                             View Details
                           </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handlepromotebutton( employee.name)}>
+                          <DropdownMenuItem onClick={() => handlepromotebutton(employee.name)}>
                             <TrendingUp className="w-4 h-4 mr-2" />
                             Promote
                           </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleassignproject( employee.name)}>
+                          <DropdownMenuItem onClick={() => handleassignproject(employee.name)}>
                             <FolderPlus className="w-4 h-4 mr-2" />
                             Assign to Project
                           </DropdownMenuItem>
@@ -202,7 +201,7 @@ const handleemployee = (employeeId: number) => {
                         variant="default"
                         size="sm"
                         className="flex-1"
-                        onClick={() => handlepromotebutton( employee.name)}
+                        onClick={() => handlepromotebutton(employee.name)}
                       >
                         <TrendingUp className="w-4 h-4 mr-1" />
                         Promote

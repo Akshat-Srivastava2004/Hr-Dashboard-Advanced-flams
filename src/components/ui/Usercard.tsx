@@ -13,10 +13,10 @@ export interface UserCardProps {
 }
 
 export function UserCard({ id, name, email, age, department, rating }: UserCardProps) {
- const { addBookmark, removeBookmark, isBookmarked } = useBookmarks()
+  const { addBookmark, removeBookmark, isBookmarked } = useBookmarks()
 
- console.log("the id is ",id);
- console.log("the name is ",name)
+  console.log("the id is ", id);
+  console.log("the name is ", name)
 
   const renderStars = () => {
     return Array.from({ length: 5 }).map((_, i) => (
@@ -24,10 +24,10 @@ export function UserCard({ id, name, email, age, department, rating }: UserCardP
     ))
   }
 
-  function letsgototheemployepage(id:number){
-        console.log("the id is from the employee is ",id);
+  function letsgototheemployepage(id: number) {
+    console.log("the id is from the employee is ", id);
   }
-  
+
   const handleBookmarkToggle = () => {
     if (!id) return
 
@@ -74,7 +74,7 @@ export function UserCard({ id, name, email, age, department, rating }: UserCardP
       <CardFooter className="flex flex-wrap gap-2 justify-between">
         {id ? (
           <Link href={`/employeewithid/${id}`} className="flex-1">
-            <Button variant="default" size="sm" className="w-full" onClick={()=>letsgototheemployepage(id)}>
+            <Button variant="default" size="sm" className="w-full" onClick={() => letsgototheemployepage(id)}>
               <Eye className="w-4 h-4 mr-1" />
               View
             </Button>
@@ -85,7 +85,7 @@ export function UserCard({ id, name, email, age, department, rating }: UserCardP
             View
           </Button>
         )}
-         <Button
+        <Button
           variant={id && isBookmarked(id) ? "default" : "outline"}
           size="sm"
           className="flex-1"

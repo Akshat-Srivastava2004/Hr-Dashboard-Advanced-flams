@@ -52,8 +52,8 @@ function generateAnalyticsData(): Analytics {
   const departments = ["Engineering", "Marketing", "Sales", "HR", "Finance", "Operations", "Design"]
 
   const departmentData: DepartmentData[] = departments.map((department) => {
-    const averageRating = Math.round((Math.random() * 2 + 3) * 10) / 10 
-    const employeeCount = Math.floor(Math.random() * 15) + 5 
+    const averageRating = Math.round((Math.random() * 2 + 3) * 10) / 10
+    const employeeCount = Math.floor(Math.random() * 15) + 5
     const totalRating = averageRating * employeeCount
 
     return { department, averageRating, employeeCount, totalRating }
@@ -102,7 +102,7 @@ export default function AnalyticsPage() {
   const [analyticsData, setAnalyticsData] = useState<Analytics | null>(null)
 
   useEffect(() => {
-   
+
     setTimeout(() => {
       setAnalyticsData(generateAnalyticsData())
     }, 1000)

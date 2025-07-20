@@ -127,9 +127,8 @@ export function EmployeeDetails({ employee }: EmployeeDetailsProps) {
                 key={tab.id}
                 variant={activeTab === tab.id ? "default" : "ghost"}
                 onClick={() => setActiveTab(tab.id)}
-                className={`rounded-b-none ${
-                  activeTab === tab.id ? "border-b-2 border-blue-500" : "border-b-2 border-transparent"
-                }`}
+                className={`rounded-b-none ${activeTab === tab.id ? "border-b-2 border-blue-500" : "border-b-2 border-transparent"
+                  }`}
               >
                 {tab.label}
               </Button>

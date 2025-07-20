@@ -24,7 +24,7 @@ function generateFeedback(employeeId: number) {
   const feedback = []
 
   for (let i = 0; i < 6; i++) {
-    const rating = Math.floor(Math.random() * 2) + 4 
+    const rating = Math.floor(Math.random() * 2) + 4
     const type = feedbackTypes[Math.floor(Math.random() * feedbackTypes.length)]
 
     feedback.push({
